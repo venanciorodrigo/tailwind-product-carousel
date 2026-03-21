@@ -1,0 +1,61 @@
+/* Fonts */
+
+@font-face {
+  font-family: "Source Serif Pro";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/source-serif-pro@latest/latin-700-normal.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/source-serif-pro@latest/latin-700-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Source Serif Pro";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/source-serif-pro@latest/latin-900-normal.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/source-serif-pro@latest/latin-900-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.bebas {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+}
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.source-serif-pro {
+  font-family: "Source Serif Pro", sans-serif;
+}
+
+/* Scrollbar */
+.scrollbar-dynamic::-webkit-scrollbar {
+  height: 4px;
+  transition: height 0.3s ease;
+}
+
+.scrollbar-dynamic::-webkit-scrollbar-track {
+  background: #ddd6d7;
+}
+
+.scrollbar-dynamic::-webkit-scrollbar-thumb {
+  background: #231f20;
+  border-radius: 9999px;
+}
+
+.scrollbar-dynamic.scrolling::-webkit-scrollbar {
+  height: 6px;
+  transition: height 0.3s ease;
+}
