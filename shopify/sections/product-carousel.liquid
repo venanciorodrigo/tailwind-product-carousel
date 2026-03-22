@@ -1,0 +1,123 @@
+{% assign best_sellers = collections['best-sellers'] %}
+
+<div class="bg-white p-4 md:p-10 md:px-0">
+  <div class="mx-auto md:px-12">
+    <div class="md:flex md:justify-between w-full pb-4 text-center">
+      <h2
+        class="text-[28px] font-bold md:font-black md:text-[40px] source-serif-pro color-[#231F20] tracking-[-1%]"
+      >
+        {{ best_sellers.title}}
+      </h2>
+
+      <div class="pt-4 pr-8 hidden md:flex">
+        <a href="{{ best_sellers.url }}" class="flex">
+          <p
+            class="text-right poppins font-semibold tracking-[3%] text-sm pr-2"
+          >
+            Shop All {{ best_sellers.title}}
+          </p>
+          <img width="20" height="20" src="{{ 'arrow-narrow-right.svg' | asset_url }}" class="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Container -->
+    <div
+      class="scrollbar-dynamic grid grid-cols-2 gap-3 md:flex md:gap-4 md:overflow-x-auto md:pb-8 [&_.card:nth-child(n+5)]:hidden md:[&_.card:nth-child(n+5)]:block"
+    >
+      <!-- CARD -->
+      {% for product in collections['all'].products %}
+        <a href="{{ product.url }}" class="card w-full md:w-[355px] shrink-0 cursor-pointer">
+          <!-- Image -->
+          <div class="relative group">
+            <img width="355" height="355"
+              src="{{ product.featured_image | image_url: width: 355, height: 355, crop: 'center' }}"
+              alt="{{ product.featured_image.alt }}
+              class="w-full h-auto md:w-[355px] md:h-[355px] object-cover rounded-[10px]"
+            />
+
+            {% assign next_image = product.images[1] %}
+            {% if next_image %}
+              <img width="355" height="355"
+                src="{{ next_image | image_url: width: 355 }}" 
+                alt="{{ next_image.alt }}"
+                class="absolute inset-0 w-full h-full object-cover rounded-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"
+              />
+            {% endif %}
+
+            {% if product.tags.size > 0 %}
+              {% assign first_tag = product.tags[0] %}
+              {% assign second_tag = product.tags[1] %}
+
+              {% if first_tag %}
+                <div
+                  class="absolute bebas top-1 left-1 md:top-2 md:left-2 tracking-[4%] md:tracking-[6%] bg-white text-black text-[8px] md:text-[10px] px-2 py-0.5 md:py-0.75 rounded-full border border-black"
+                >
+                  {{ first_tag }}
+                </div>
+              {% endif %}
+
+              {% if second_tag %}
+                <div
+                  class="absolute bebas top-1 right-1 md:top-2 md:right-2 tracking-[4%] md:tracking-[6%] bg-[#5C7962] text-white text-[8px] md:text-[10px] px-2 py-0.5 md:py-0.75 rounded-full border border-black"
+                >
+                  {{ second_tag }}
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+
+          <div class="p-2 md:px-2 md:py-4">
+            <!-- Product Title -->
+            <h3 class="bebas text-base md:text-lg uppercase tracking-[3%]">
+              {{ product.title }}
+            </h3>
+
+            <!-- Stars -->
+            <div class="flex mt-1.5">
+              <div class="flex w-14 md:w-20">
+                <img width="16" height="16" src="{{ 'star-01.svg' | asset_url }}" class="w-3 md:w-4" />
+                <img width="16" height="16" src="{{ 'star-01.svg' | asset_url }}" class="w-3 md:w-4" />
+                <img width="16" height="16" src="{{ 'star-01.svg' | asset_url }}" class="w-3 md:w-4" />
+                <img width="16" height="16" src="{{ 'star-01.svg' | asset_url }}" class="w-3 md:w-4" />
+                <img width="16" height="16" src="{{ 'star-01-b.svg' | asset_url }}" class="w-3 md:w-4" />
+              </div>
+
+              {% assign random_number = "now" | date: "%N" | modulo: 9999 | plus: 0 %}
+              <p
+                class="poppins text-[11px] md:text-xs flex pl-1 text-[#707070]"
+              >
+                {{ random_number }} Reviews
+              </p>
+            </div>
+
+            <!-- Price -->
+            <p
+              class="poppins font-medium text-base uppercase mt-2 text-[#1C1D1D]"
+            >
+              ${{ product.price |  money_without_currency }}
+            </p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    <button
+      id="showMoreBtn"
+      class="bg-[#1C1D1D] poppins md:hidden w-full hover:bg-gray-500 text-white font-semibold py-3 px-2 mt-3 rounded-full"
+    >
+      Show More
+    </button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Carousel",
+  "presets": [
+    {
+      "name": "product-carousel"
+    }
+  ]
+}
+{% endschema %}
