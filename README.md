@@ -4,7 +4,10 @@ A lightweight and responsive product carousel component built to demonstrate **T
 
 ## 🚀 Demo Page
 
-- https://venanciorodrigo.github.io/tailwind-product-carousel/
+📄 Static Website: https://venanciorodrigo.github.io/tailwind-product-carousel/
+
+🛒 Shopify Store: https://rodrigovenancio.myshopify.com/ 🔐 **Password:** ```Teltex```
+> The Shopify store showcases the carousel using **real products from the Shopify product list**, providing a more realistic implementation of the component in a live storefront environment.
 
 ---
 
@@ -15,6 +18,7 @@ A lightweight and responsive product carousel component built to demonstrate **T
 * **Responsive Design**
 * **Vanilla JS**
 * **Google Fonts Integration**
+* **Shopify Integration Example:** Includes a reusable `product-carousel.liquid` section located in the `shopify/sections` folder for demonstration.
 
 ---
 
